@@ -2,11 +2,11 @@ package com.jachs.spring_jdbc.dbcp;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.junit.Test;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -22,19 +22,22 @@ public class DbcpTest {
 	
 	@Test
 	public void test1() {
-		DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
-		XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
-		reader.loadBeanDefinitions(new ClassPathResource("datasource/dbcp.xml"));
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("datasource/dbcp.xml");
+
+		JdbcTemplate jdbcTemplate=ctx.getBean("jdbcTemplate",JdbcTemplate.class);
 		
-		JdbcTemplate jdbcTemplate=beanFactory.getBean("jdbcTemplate",JdbcTemplate.class);
-		
-		jdbcTemplate.query("select * from computer", new RowMapper<Computer>() {
+		List<Computer> cpList=jdbcTemplate.query("select * from computer", new RowMapper<Computer>() {
 			public Computer mapRow(ResultSet rs, int rowNum) throws SQLException {
-				System.out.println(rs.getString(1));
-				return null;
+				Computer cp=new Computer();
+				cp.setMadeTime(rs.getTime("madeTime"));
+				cp.setComputerId(rs.getString("computerId"));
+				cp.setComputerName(rs.getString("computerName"));
+				cp.setComputerPrice(rs.getLong("computerPrice"));
+				return cp;
 			}
-			
 		});
-		
+		for (Computer cp:cpList) {
+			System.out.println(cp.getComputerName());
+		}
 	}
 }

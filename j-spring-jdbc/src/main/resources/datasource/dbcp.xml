@@ -7,18 +7,24 @@
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- org.springframework.beans.factory.config.PropertyPlaceholderConfigurer -->
-	<!-- <bean id="config" class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer"> 
-		<property name="locations"> <list> <value>classpath:dbcp/jdbc.properties</value> 
-		</list> </property> <property name="fileEncoding" value="UTF-8"/> <property 
-		name="ignoreUnresolvablePlaceholders" value="true"/> <property name="ignoreResourceNotFound" 
-		value="true"/> </bean> -->
+
+	<bean id="config" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="order" value="0" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:datasource/jdbc.properties</value>
+			</list>
+		</property>
+		<property name="fileEncoding" value="UTF-8"/>
+
+	</bean>
 		
-	<bean id="dbcpDataSource"	class="org.apache.commons.dbcp2.BasicDataSource"	destroy-method="close">
-		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://127.0.0.1:3306/jpatest?useUnicode=true" />
-		<property name="username" value="root" />
-		<property name="password" value="" />
+	<bean id="dbcpDataSource"	class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${driverClassName}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
 	</bean>
 
 	<!-- 创建spring jdbcTemplate -->
