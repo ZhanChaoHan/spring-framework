@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/jdbc https://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd">
+		
+	<!-- 嵌入式数据源作为应用的一部分运行，非常适合在开发和测试环境中使用，但是不适合用于生产环境。因为在使用嵌入式数据源的情况下，你可以在每次应用启动或者每次运行单元测试之前初始化测试数据。 -->
+	<jdbc:embedded-database id="dataSource" type="HSQL">
+		<jdbc:script location="classpath:org/springframework/jdbc/config/db-schema.sql" />
+		<jdbc:script location="classpath:org/springframework/jdbc/config/db-test-data.sql" />
+	</jdbc:embedded-database>
+
+	<jdbc:embedded-database id="h2DataSource" type="H2">
+		<jdbc:script location="classpath:org/springframework/jdbc/config/db-schema.sql" />
+		<jdbc:script location="classpath:org/springframework/jdbc/config/db-test-data.sql" />
+	</jdbc:embedded-database>
+	<!--  
+	<jdbc:embedded-database id="derbyDataSource" type="DERBY">
+		<jdbc:script location="classpath:org/springframework/jdbc/config/db-schema-derby.sql" />
+		<jdbc:script location="classpath:org/springframework/jdbc/config/db-test-data.sql" />
+	</jdbc:embedded-database>
+	-->
+</beans>

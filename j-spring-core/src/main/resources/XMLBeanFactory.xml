@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- set方法注入 -->
+	<bean id="jack" class="com.jachs.spring_core.bean.People">
+		<property name="name" value="jack.kj"></property>
+		<property name="age" value="14"></property>
+		<property name="phoneNum" value="12365412541"></property>
+	</bean>
+	<!-- 构造方法注入 -->
+	<bean id="jason" class="com.jachs.spring_core.bean.Person">
+		<constructor-arg name="name" value="皮皮虾"></constructor-arg>
+		<constructor-arg name="age" value="5"></constructor-arg>
+		<constructor-arg name="phoneNum" value="145874122"></constructor-arg>
+	</bean>
+	<!-- p空间名称注入 -->
+	<bean id="jessica" class="com.jachs.spring_core.bean.People" p:name="jessKa" p:age="12" p:phoneNum="123456"></bean>
+	
+	<!--  -->
+	<bean id="mockConn" class="com.jachs.spring_core.bean.MockConnection" init-method="initConnection" destroy-method="destoryConnection">
+		<property name="people" ref="jack"></property>
+	</bean>
+</beans>

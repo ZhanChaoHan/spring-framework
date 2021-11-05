@@ -1,0 +1,16 @@
+bean标签属性
+
+    id：给对象在容器中提供一个唯一标识。用于获取对象。
+    class：指定类的全限定名。用于反射创建对象。默认情况下调用无参构造函数。
+    scope：指定对象的作用范围。
+        singleton：默认值，单例的（在整个容器中只有一个对象）.
+        prototype：多例的
+        request：将Spring 创建的 Bean 对象存入到 request 域中.
+        session：将Spring 创建的 Bean 对象存入到 session 域中.
+        application：将 Spring Bean 存储在 ServletContext 中.
+        global session：WEB 项目中,应用在 Portlet 环境.如果没有 Portlet 环境那么globalSession 相当于 session。
+    init-method：指定类中的初始化方法名称。
+    destroy-method：指定类中销毁方法名称。比如DataSource的配置中一般需要指定destroy-method=“close”。
+    lazy-init：ApplicationContext实现的默认行为就是在启动时将所有 singleton bean进行实例化。lazy-init可以延迟初始化，设置lazy-init="true"使得Ioc容器在第一次需要bean的时候进行实例化。
+
+    https://www.cnblogs.com/lifullmoon/p/14422101.html

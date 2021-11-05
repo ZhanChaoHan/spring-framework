@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+	<bean id="msm" class="com.jachs.spring_core.ioc.iface.MicrosoftMouse"></bean>
+	<bean id="tbm" class="com.jachs.spring_core.ioc.iface.TaoBaoMouse"></bean>
+	
+	<bean id="myPc" class="com.jachs.spring_core.ioc.Computer">
+		<!--  <property name="mouse" ref="msm"></property>-->
+		<property name="mouse" ref="tbm"></property>
+	</bean>
+</beans>

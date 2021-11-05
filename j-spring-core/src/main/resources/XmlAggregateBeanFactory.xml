@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="aggregate"
+		class="com.jachs.spring_core.bean.list.Aggregate">
+		<property name="strList">
+			<list>
+				<!-- 如果集合内是简单类型，使用value子标签，如果是POJO类型，则使用bean标签 -->
+				<value>张三</value>
+				<value>李四</value>
+				<value>jachs</value>
+				<value>jk</value>
+				<value>OICY</value>
+			</list>
+		</property>
+		<property name="intList">
+			<list>
+				<value>1</value>
+				<value>2</value>
+				<value>3</value>
+				<value>4</value>
+				<value>5</value>
+			</list>
+		</property>
+		<!-- List -->
+		<property name="sList">
+			<list>
+				<value>JNCH</value>
+				<value>EIJVH</value>
+				<value>LMCJH</value>
+				<value>OIUTSC</value>
+				<value>ACHT6E</value>
+				<value>OIUDYFT</value>
+			</list>
+		</property>
+		<property name="perList">
+			<list>
+				<bean class="com.jachs.spring_core.bean.Person">
+					<constructor-arg name="name" value="皮皮虾"></constructor-arg>
+					<constructor-arg name="age" value="5"></constructor-arg>
+					<constructor-arg name="phoneNum" value="145874122"></constructor-arg>
+				</bean>
+				<bean class="com.jachs.spring_core.bean.Person">
+					<constructor-arg name="name" value="HGCV"></constructor-arg>
+					<constructor-arg name="age" value="6"></constructor-arg>
+					<constructor-arg name="phoneNum" value="1234589"></constructor-arg>
+				</bean>
+			</list>
+		</property>
+		<!-- Set -->
+		<property name="setSet">
+			<set>
+				<value>AAA</value>
+				<value>BBB</value>
+				<value>CCC</value>
+				<value>DDD</value>
+				<value>EEE</value>
+				<value>FFF</value>
+			</set>
+		</property>
+		<property name="perSet">
+			<set>
+				<bean class="com.jachs.spring_core.bean.Person">
+					<constructor-arg name="name" value="setNameA"></constructor-arg>
+					<constructor-arg name="age" value="34"></constructor-arg>
+					<constructor-arg name="phoneNum" value="145874122"></constructor-arg>
+				</bean>
+				<bean class="com.jachs.spring_core.bean.Person">
+					<constructor-arg name="name" value="setNameb"></constructor-arg>
+					<constructor-arg name="age" value="54"></constructor-arg>
+					<constructor-arg name="phoneNum" value="1234589"></constructor-arg>
+				</bean>
+			</set>
+		</property>
+		<!-- map -->
+		<property name="map">
+			<map>
+				<entry key="张三" value="38" />
+				<entry key="李四" value="38" />
+				<entry key="王五" value="29" />
+			</map>
+		</property>
+		<!-- Properties -->
+		<property name="pro">
+			<props>
+				<prop key="uname">root</prop>
+				<prop key="pass">123</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>
