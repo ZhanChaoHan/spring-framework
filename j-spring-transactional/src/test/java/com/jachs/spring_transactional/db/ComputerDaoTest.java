@@ -21,6 +21,7 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
  */
 public class ComputerDaoTest {
 	ApplicationContext ctx = new ClassPathXmlApplicationContext("db/spring-druid.xml");
+	
 	@Test
 	public void test1() {
 		ComputerDao cDao=ctx.getBean("cDao",ComputerDao.class);

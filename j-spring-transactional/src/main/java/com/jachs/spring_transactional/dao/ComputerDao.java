@@ -18,7 +18,7 @@ public class ComputerDao {
 				computer.getComputerId(),computer.getComputerName(),
 				computer.getComputerPrice(),computer.getMadeTime());
 	}
-
+	
 	public JdbcTemplate getTemp() {
 		return temp;
 	}

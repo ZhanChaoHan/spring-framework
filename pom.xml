@@ -18,7 +18,9 @@
 		<hsql.version>0.9.5</hsql.version>
 		<h2.version>1.4.200</h2.version>
 		<derby.version>10.15.2.0</derby.version>
+		<lombok.version>1.18.22</lombok.version>
 		<aspectj.version>1.9.7</aspectj.version>
+		<commons.version>3.12.0</commons.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 	</properties>
@@ -27,6 +29,8 @@
 		<module>j-spring-jdbc</module>
 		<module>j-spring-core</module>
 		<module>j-spring-aop</module>
+		<module>j-spring-mail</module>
+		<module>j-spring-transactional</module>
 	</modules>
 
 	<dependencies>
@@ -50,7 +54,17 @@
 			<artifactId>spring-context-support</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons.version}</version>
+		</dependency>
+
 		<!-- test -->
 		<dependency>
 			<groupId>junit</groupId>
