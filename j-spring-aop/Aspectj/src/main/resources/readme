@@ -1,0 +1,91 @@
+http://www.eclipse.org/aspectj/doc/released/progguide/index.html
+
+AspectJ切入点@Pointcut语法详解非常详细
+
+分类pointcuts 遵循特定的语法用于捕获每一个种类的可使用连接点。 主要的种类：
+方法执行：execution(MethodSignature)
+方法调用：call(MethodSignature)
+构造器执行：execution(ConstructorSignature)
+构造器调用：call(ConstructorSignature)
+类初始化：staticinitialization(TypeSignature)
+属性读操作：get(FieldSignature)
+属性写操作：set(FieldSignature)
+例外处理执行：handler(TypeSignature)
+对象初始化：initialization(ConstructorSignature)
+对象预先初始化：preinitialization(ConstructorSignature)
+
+Advice执行：adviceexecution()
+切入点指示符用来指示切入点表达式目的，，在Spring AOP中目前只有执行方法这一个连接点，Spring AOP支持的AspectJ切入点指示符如下：
+execution：用于匹配方法执行的连接点；
+within：用于匹配指定类型内的方法执行；
+this：用于匹配当前AOP代理对象类型的执行方法；注意是AOP代理对象的类型匹配，这样就可能包括引入接口也类型匹配；
+target：用于匹配当前目标对象类型的执行方法；注意是目标对象的类型匹配，这样就不包括引入接口也类型匹配；
+args：用于匹配当前执行的方法传入的参数为指定类型的执行方法；
+@within：用于匹配所以持有指定注解类型内的方法；
+@target：用于匹配当前目标对象类型的执行方法，其中目标对象持有指定的注解；
+@args：用于匹配当前执行的方法传入的参数持有指定注解的执行；
+@annotation：用于匹配当前执行方法持有指定注解的方法；
+bean：Spring AOP扩展的，AspectJ没有对于指示符，用于匹配特定名称的Bean对象的执行方法；
+reference pointcut：表示引用其他命名切入点，只有@ApectJ风格支持，Schema风格不支持。
+
+来了解下AspectJ类型匹配的通配符：
+：匹配任何数量字符；
+…：匹配任何数量字符的重复，如在类型模式中匹配任何数量子包；而在方法参数模式中匹配任何数量参数。
++：匹配指定类型的子类型；仅能作为后缀放在类型模式后边。
+java.lang.String 匹配String类型；
+java..String 匹配java包下的任何“一级子包”下的String类型；
+如匹配java.lang.String，但不匹配java.lang.ss.String
+java…* 匹配java包及任何子包下的任何类型;
+如匹配java.lang.String、java.lang.annotation.Annotation
+java.lang.*ing 匹配任何java.lang包下的以ing结尾的类型；
+java.lang.Number+ 匹配java.lang包下的任何Number的自类型；
+如匹配java.lang.Integer，也匹配java.math.BigInteger
+
+任意公共方法的执行：
+execution(public * (…))
+任何一个以“set”开始的方法的执行：
+execution( set*(…))
+AccountService 接口的任意方法的执行：
+execution(* com.xyz.service.AccountService.(…))
+定义在service包里的任意方法的执行：
+execution( com.xyz.service..(…))
+定义在service包和所有子包里的任意类的任意方法的执行：
+execution(* com.xyz.service….(…))
+定义在pointcutexp包和所有子包里的JoinPointObjP2类的任意方法的执行：
+execution(* com.test.spring.aop.pointcutexp…JoinPointObjP2.*(…))")
+*> 最靠近(…)的为方法名,靠近.(…))的为类名或者接口名,如上例的JoinPointObjP2.(…))
+
+pointcutexp包里的任意类.
+within(com.test.spring.aop.pointcutexp.)
+pointcutexp包和所有子包里的任意类.
+within(com.test.spring.aop.pointcutexp…)
+实现了Intf接口的所有类,如果Intf不是接口,限定Intf单个类.
+this(com.test.spring.aop.pointcutexp.Intf)
+***> 当一个实现了接口的类被AOP的时候,用getBean方法必须cast为接口类型,不能为该类的类型.
+
+带有@Transactional标注的所有类的任意方法.
+@within(org.springframework.transaction.annotation.Transactional)
+@target(org.springframework.transaction.annotation.Transactional)
+带有@Transactional标注的任意方法.
+@annotation(org.springframework.transaction.annotation.Transactional)
+***> @within和@target针对类的注解,@annotation是针对方法的注解
+
+参数带有@Transactional标注的方法.
+@args(org.springframework.transaction.annotation.Transactional)
+参数为String类型(运行是决定)的方法.
+
+// @Aspect不再能修饰接口，而只能是类
+// 访问aspect实例时，不再能使用aspectOf()和hasAspect()
+// 而应以aspect的类作为参数，使用由org.aspectj.lang.Aspects提供的静态方法aspectOf()与hasAspect()
+@Aspect(“perthis|pertarget|percflow|percflowbelow(Pointcut) | pertypewithin(TypePattern)”)
+// 定义aspect的优先顺序，需要使用完全的限定名，这在@AspectJ中很普遍，也是由Java编译器决定的
+// AspectJ的未来版本可能提供string[]类型的参数支持
+@DeclarePrecedence(“ajia.HomeSecurityAspect, ajia.SaveEnergyAspect”)
+public abstract static class AspectName
+extends class_or_aspect_name
+implements interface_list
+{
+// 使用@Pointcut配合一个占位用的方法声明来定义一个pointcut
+// 抽象pointcut依旧只有名字、参数，没有实际的joinpoint定义
+@Pointcut
+public abstract void pointcut_name(Type args);
