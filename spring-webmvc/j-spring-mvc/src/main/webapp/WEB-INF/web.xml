@@ -12,7 +12,6 @@
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <!-- 对应上一步创建全局配置文件的文件名以及目录 -->
       <param-value>classpath:spring-mvc.xml</param-value>
     </init-param>
   </servlet>
@@ -21,4 +20,6 @@
     <servlet-name>springmvc</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
+
+
 </web-app>

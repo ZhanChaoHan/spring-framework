@@ -26,5 +26,11 @@
 
     <!-- 配置视图解析器
         进行jsp解析，默认使用jstl标签，classpath下得有jstl的包-->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" />
+    <!-- 视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"></property>
+        <property name="suffix" value=".jsp"></property>
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+    </bean>
+
 </beans>

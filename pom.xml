@@ -28,9 +28,10 @@
 	<modules>
 		<module>j-spring-jdbc</module>
 		<module>j-spring-core</module>
-		<module>j-spring-aop</module>
+		<module>j-spring-aop/j-spring-aop</module>
 		<module>j-spring-mail</module>
 		<module>j-spring-transactional</module>
+		<module>spring-webmvc/j-spring-mvc</module>
 	</modules>
 
 	<dependencies>

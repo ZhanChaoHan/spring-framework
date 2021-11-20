@@ -5,6 +5,9 @@ import org.springframework.web.servlet.mvc.Controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/***
+ * @author zhanchaohan
+ */
 public class LogController implements Controller {
 
     @Override
@@ -13,7 +16,7 @@ public class LogController implements Controller {
         ModelAndView modelView = new ModelAndView();
         //类似于 request.setAttribute()
         modelView.addObject("name","张三");
-        modelView.setViewName("/WEB-INF/view/index.jsp");
+        modelView.setViewName("/index");
         return modelView;
     }
 
