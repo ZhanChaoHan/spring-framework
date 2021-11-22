@@ -16,18 +16,19 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <!-- 配置处理器映射器
-     将bean的name作为url进行查找，需要在配置Handler时指定bean name（就是url）-->
-    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
-    <!-- 配置处理器适配器，所有适配器都得实现 HandlerAdapter接口 -->
-    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+    <!-- 支持mvc注解驱动 -->
+    <mvc:annotation-driven />
+    <!-- 启用注解  -->
+    <context:annotation-config />
+    <!-- 设置使用注解的类所在的包 -->
+    <context:component-scan base-package="com.jachs.mvc.controller"></context:component-scan>
 
-    <!-- 配置视图解析器
-        进行jsp解析，默认使用jstl标签，classpath下得有jstl的包-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/view/"></property>
         <property name="suffix" value=".jsp"></property>
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
     </bean>
-    <import resource="/spring-controller.xml"></import>
+
+    <!-- 静态资源访问（不拦截此目录下的东西的访问） -->
+    <mvc:resources location="/img/"  mapping="/img/**" />
 </beans>

@@ -32,6 +32,7 @@
 		<module>j-spring-mail</module>
 		<module>j-spring-transactional</module>
 		<module>spring-webmvc/j-spring-mvc</module>
+		<module>spring-webmvc/j-spring-mvc-annotation</module>
 	</modules>
 
 	<dependencies>
