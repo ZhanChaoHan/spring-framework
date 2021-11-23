@@ -30,7 +30,8 @@
 		<module>j-spring-core</module>
 		<module>j-spring-aop/j-spring-aop</module>
 		<module>j-spring-mail</module>
-		<module>j-spring-transactional</module>
+		<module>j-spring-transactional/j-spring-transactional</module>
+		<module>j-spring-transactional/j-spring-transactional-advice</module>
 		<module>spring-webmvc/j-spring-mvc</module>
 		<module>spring-webmvc/j-spring-mvc-annotation</module>
 	</modules>

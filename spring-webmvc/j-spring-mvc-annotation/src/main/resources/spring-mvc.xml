@@ -29,6 +29,14 @@
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
     </bean>
 
+    <!--配置拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path=""/>
+            <bean class="com.jachs.mvc.interceptor.CustomInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
     <!-- 静态资源访问（不拦截此目录下的东西的访问） -->
     <mvc:resources location="/img/"  mapping="/img/**" />
 </beans>

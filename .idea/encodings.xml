@@ -7,10 +7,13 @@
     <file url="file://$PROJECT_DIR$/j-spring-core/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/j-spring-jdbc/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/j-spring-jdbc/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/j-spring-mail/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/j-spring-mail/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/j-spring-transactional/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/j-spring-transactional/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/j-spring-transactional/j-spring-transactional-advice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/j-spring-transactional/j-spring-transactional-advice/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/j-spring-transactional/j-spring-transactional/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/j-spring-transactional/j-spring-transactional/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-webmvc/j-spring-mvc-annotation/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-webmvc/j-spring-mvc-annotation/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-webmvc/j-spring-mvc/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-webmvc/j-spring-mvc/src/main/resources" charset="UTF-8" />
   </component>
