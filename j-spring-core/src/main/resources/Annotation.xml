@@ -12,5 +12,5 @@
 
 	<bean id="zoo" class="com.jachs.spring_core.annotation.Zoo" />
 	<bean id="tiger" class="com.jachs.spring_core.annotation.Tiger" />
-	<bean id="monkey" class="com.jachs.spring_core.annotation.Monkey" />
+	<bean id="monkey" class="com.jachs.spring_core.annotation.Monkey" init-method="afterPropertiesSet" destroy-method="destroy"/>
 </beans>
