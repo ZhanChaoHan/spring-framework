@@ -7,6 +7,7 @@
 		<groupId>com.jachs</groupId>
 		<artifactId>j-spring</artifactId>
 		<version>1.0</version>
+		<relativePath>../../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>j-spring-r2dbc</artifactId>

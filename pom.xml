@@ -1,14 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>com.jachs</groupId>
 	<artifactId>j-spring</artifactId>
 	<version>1.0</version>
 	<packaging>pom</packaging>
 
-	<name>j-spring-jdbc</name>
+	<name>j-spring</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -34,6 +34,8 @@
 		<module>j-spring-transactional/j-spring-transactional-advice</module>
 		<module>spring-webmvc/j-spring-mvc</module>
 		<module>spring-webmvc/j-spring-mvc-annotation</module>
+		<module>j-spring-r2dbc/j-spring-r2dbc</module>
+		<module>j-spring-expression</module>
 	</modules>
 
 	<dependencies>
