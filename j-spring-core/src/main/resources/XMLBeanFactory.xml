@@ -23,4 +23,20 @@
 	<bean id="mockConn" class="com.jachs.spring_core.bean.MockConnection" init-method="initConnection" destroy-method="destoryConnection">
 		<property name="people" ref="jack"></property>
 	</bean>
+
+	<!--lookup方法测试-->
+	<bean id="teacher" class="com.jachs.spring_core.bean.lookup.Teacher"></bean>
+	<bean id="studenst" class="com.jachs.spring_core.bean.lookup.Student"></bean>
+
+	<bean id="getBentTest" class="com.jachs.spring_core.bean.lookup.GetBeanTest">
+		<!--<lookup-method name="getBean" bean="teacher"></lookup-method>-->
+		<lookup-method name="getBean" bean="studenst"></lookup-method>
+	</bean>
+
+	<!--replaced方法测试-->
+	<bean id="replacer"  class="com.jachs.spring_core.bean.replacer.TestMethodReplacer"></bean>
+
+	<bean id="testChangMethod"  class="com.jachs.spring_core.bean.replacer.TestChangMethod">
+		<replaced-method name="changMe" replacer="replacer"></replaced-method>
+	</bean>
 </beans>

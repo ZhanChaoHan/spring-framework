@@ -1,5 +1,7 @@
 package com.jachs.spring_core.bean;
 
+import com.jachs.spring_core.bean.lookup.GetBeanTest;
+import com.jachs.spring_core.bean.replacer.TestChangMethod;
 import org.junit.Test;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
@@ -49,5 +51,30 @@ public class XMLBeanFactoryTest {
 		DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 		XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
 		reader.loadBeanDefinitions(new ClassPathResource("XMLBeanFactory.xml"));
+
+		MockConnection mc=beanFactory.getBean("mockConn",MockConnection.class);
+
+		System.out.println(mc.getPeople().getName());
 	}
+	//获取器注入是一种特殊的方法注入把方法声明为返回类型的bean,但实际返回的bean是配置文件的，实现可插拔功能
+	@Test
+	public void testLookup(){
+		DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+		XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
+		reader.loadBeanDefinitions(new ClassPathResource("XMLBeanFactory.xml"));
+
+		GetBeanTest gtest=beanFactory.getBean("getBentTest", GetBeanTest.class);
+		gtest.showMe();
+	}
+	//获取器注入是一种特殊的方法注入把方法声明为返回类型的bean,但实际返回的bean是配置文件的，实现可插拔功能
+	@Test
+	public void testReplacer(){
+		DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+		XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
+		reader.loadBeanDefinitions(new ClassPathResource("XMLBeanFactory.xml"));
+
+		TestChangMethod gtest=beanFactory.getBean("testChangMethod", TestChangMethod.class);
+		gtest.changMe();
+	}
+
 }

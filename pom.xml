@@ -36,6 +36,8 @@
 		<module>spring-webmvc/j-spring-mvc-annotation</module>
 		<module>j-spring-r2dbc/j-spring-r2dbc</module>
 		<module>j-spring-expression</module>
+		<module>j-spring-rmi/j-spring-rmi-service</module>
+		<module>j-spring-rmi/j-spring-rmi-client</module>
 	</modules>
 
 	<dependencies>
@@ -102,6 +104,5 @@
 			<version>3.12.1</version>
 			<scope>provided </scope>
 		</dependency>
-
 	</dependencies>
 </project>
