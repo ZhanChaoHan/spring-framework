@@ -11,6 +11,8 @@
         <module name="j-spring-jdbc" />
         <module name="j-spring-mvc-annotation" />
         <module name="j-spring-transactional-advice" />
+        <module name="j-spring-rmi-client" />
+        <module name="j-spring-rmi-service" />
         <module name="j-spring-r2dbc" />
         <module name="j-spring-mvc" />
         <module name="j-spring-expression" />

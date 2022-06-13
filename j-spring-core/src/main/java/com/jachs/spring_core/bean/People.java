@@ -28,5 +28,7 @@ public class People {
 	public void setPhoneNum(long phoneNum) {
 		this.phoneNum = phoneNum;
 	}
-	
+
+	public People() {
+	}
 }

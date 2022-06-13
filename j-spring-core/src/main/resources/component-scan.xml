@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+
+	<!--
+		base-package: 扫描的基本包路径
+		annotation-config:是否激活属性注入注解
+		name-generator:Bean的ID策略生成器
+		resource-pattern:对资源进行筛选的正则表达式，这边是个大的范畴，具体细分在include-filter与exclude-filter中进行
+		scope-resolver:scope解析器 ，与scoped-proxy只能同时配置一个
+		scoped-proxy:scope代理，与scope-resolver只能同时配置一个
+		use-default-filters:是否使用默认的过滤器，默认值true
+	-->
+	<context:component-scan
+		base-package="com.jachs.spring_core.annotation"
+		use-default-filters="false">
+
+		<!--
+		 annotation是对注解进行扫描
+		 assignable是对类或接口进行扫描
+		 注意：在use-default-filters="false"的情况下，exclude-filter是针对include-filter里的内容进行排除
+		 -->
+
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+
+		<context:include-filter type="assignable" expression="com.jachs.spring_core.component_scan.Performer"/>
+		<context:include-filter type="assignable" expression="com.jachs.spring_core.component_scan.Sonnet"/>
+
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:exclude-filter type="assignable" expression="com.jachs.spring_core.component_scan.RainPoem"/>
+		<context:exclude-filter type="regex" expression=".service.*"/>
+
+	</context:component-scan>
+
+	<bean id="zoo" class="com.jachs.spring_core.annotation.Zoo" />
+	<bean id="tiger" class="com.jachs.spring_core.annotation.Tiger" />
+	<bean id="monkey" class="com.jachs.spring_core.annotation.Monkey" init-method="afterPropertiesSet" destroy-method="destroy"/>
+</beans>
