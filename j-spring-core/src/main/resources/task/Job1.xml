@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/task 
+    http://www.springframework.org/schema/task/spring-task-3.2.xsd
+    ">
+
+	<bean id="job1" class="com.jachs.spring_core.task.job1.Job1"></bean>
+	<bean id="job2" class="com.jachs.spring_core.task.job1.Job2"></bean>
+	
+	
+	<task:scheduled-tasks>
+        <task:scheduled ref="job1" method="run" fixed-rate="5000"/>
+        <task:scheduled ref="job2" method="run" cron="0/10 * * * * ?"/>
+        
+    </task:scheduled-tasks>
+    
+        
+</beans>
